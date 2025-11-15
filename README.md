@@ -1,42 +1,43 @@
-# TC2008B
+# WebGL
 
-Course material for the Multi-agents and computer graphics course. By the end of the course, you will create a traffic simulation, where each car is an individual agent that has to traverse a city with other cars:
+![WebGL](WebGL.png)
 
-![Sample project](/docs/Images/Sample%20Simulation.png)
-*Sample simulation created by Mateo Herrera, and Gerardo Gutiérrez.*
+Learning about WebGL
 
-The repository contains the following material:
+## Running the server
 
-- [Documents](Documents/): Has presentations, and cheat sheets.
-- [Agents Visualization](AgentsVisualization/Readme.md): This is a webGL project that is used to visualize the random agents model using HTML instead of mesa.
-- [Mesa examples](mesaExamples/Readme.md): The basic mesa examples. Included the random model, forest fire, and the city model.
+To install the dependencies:
 
-# Setup instructions
+```bash
+npm install
+```
 
-- Environment setup. I strongly recommend using a custom venv or conda environment.
-    - I recommend [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) over [anaconda](https://www.anaconda.com/).
-    - There is a [cheat sheet](Documents/conda-cheatsheet.pdf) in the repo with all the conda commands.
-- Installation instructions:
+To run the server:
 
-    1. Create an environment with version 3.13 of Python:
-        ```bash
-        conda create --name agents python=3.13
-        ```
-    2. Activate the new environment
-        ```bash
-        conda activate agents
-        ```
-    3. Install the requirements for **mesa**:
-        ```bash
-        pip install -U "mesa[all]"
-        ```
-    4. Install **flask**:
-        ```bash
-        pip install flask flask_cors
-        ```
-- By this moment, the environment will have all the packages needed for the projects and examples to run.
+```bash
+npx vite
+```
 
-# References
+This will open the index with all the examples.
 
-- [Mesa Documentation](https://mesa.readthedocs.io/en/stable/index.html)
-- [Flask User Gudie](https://flask.palletsprojects.com/en/3.0.x/)
+## References
+- https://www.khronos.org/webgl/wiki/Tutorial
+- https://webglfundamentals.org/
+- https://webgl2fundamentals.org/
+- https://www.tutorialspoint.com/webgl/index.htm
+
+Reference card for WebGL:
+- https://www.khronos.org/files/webgl20-reference-guide.pdf
+
+Full GLSL reference:
+- https://www.khronos.org/files/opengles_shading_language.pdf
+
+## Excellent tutorials:
+- https://webgl2fundamentals.org/
+A state diagram illustrating how WebGL works:
+- https://webgl2fundamentals.org/webgl/lessons/resources/webgl-state-diagram.html
+
+## Nice demos:
+- http://cubictime.ru/
+- https://madebyevan.com/webgl-water/
+
