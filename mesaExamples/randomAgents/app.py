@@ -1,12 +1,11 @@
-# app.py
-
-from random_agents.agent import RandomAgent, ObstacleAgent, FloorAgent
+from random_agents.agent import RandomAgent, ObstacleAgent, FloorAgent, StationAgent
 from random_agents.model import RandomModel
 
 from mesa.visualization import (
     Slider,
     SolaraViz,
     make_space_component,
+    make_plot_component,
 )
 
 from mesa.visualization.components import AgentPortrayalStyle
@@ -30,12 +29,20 @@ def random_portrayal(agent):
         portrayal.color = "brown"
         portrayal.marker = "^"
         portrayal.size = 10
+    elif isinstance(agent, StationAgent):
+        portrayal.color = "blue"
+        portrayal.marker = "s"
+        portrayal.size = 10
         # portrayal.edgecolors = "black"
 
     return portrayal
 
 def post_process(ax):
     ax.set_aspect("equal")
+
+def post_process_lines(ax):
+    """Format the line plot"""
+    ax.legend(loc="center left", bbox_to_anchor=(1, 0.9))
 
 model_params = {
     "seed": {
@@ -48,6 +55,7 @@ model_params = {
     "height": Slider("Grid height", 28, 1, 50),
     "num_obstacles": Slider("Number of obstacles", 15, 1, 50),
     "num_dirty_tiles": Slider("Number of dirty tiles", 20, 1, 50),
+    "max_steps": Slider("Maximum number of steps", 100, 1, 500)
 }
 
 # Create the model using the initial parameters from the settings
@@ -64,9 +72,17 @@ space_component = make_space_component(
         post_process=post_process
 )
 
+# Graphic component for plotting clean percentage
+lineplot_component = make_plot_component(
+    {
+        "Clean_Percentage": "yellow",
+    },
+    post_process=post_process_lines,
+)
+
 page = SolaraViz(
     model,
-    components=[space_component],
+    components=[space_component, lineplot_component],
     model_params=model_params,
     name="Random Model",
 )
