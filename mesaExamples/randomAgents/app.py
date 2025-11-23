@@ -33,7 +33,7 @@ def random_portrayal(agent):
         portrayal.color = "blue"
         portrayal.marker = "s"
         portrayal.size = 10
-        # portrayal.edgecolors = "black"
+
 
     return portrayal
 
@@ -41,7 +41,7 @@ def post_process(ax):
     ax.set_aspect("equal")
 
 def post_process_lines(ax):
-    """Format the line plot"""
+
     ax.legend(loc="center left", bbox_to_anchor=(1, 0.9))
 
 model_params = {
@@ -58,7 +58,7 @@ model_params = {
     "max_steps": Slider("Maximum number of steps", 100, 1, 500)
 }
 
-# Create the model using the initial parameters from the settings
+
 model = RandomModel(
     num_agents=model_params["num_agents"].value,
     width=model_params["width"].value,
@@ -72,10 +72,9 @@ space_component = make_space_component(
         post_process=post_process
 )
 
-# Graphic component for plotting clean percentage
 lineplot_component = make_plot_component(
     {
-        "Clean_Percentage": "yellow",
+        "Clean_Percentage": "red",
     },
     post_process=post_process_lines,
 )

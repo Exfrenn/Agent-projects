@@ -40,7 +40,6 @@ model_params = {
 }
 
 
-# Create the model using the initial parameters from the settings
 model = RandomModel(
     num_agents=model_params["num_agents"].value,
     width=model_params["width"].value,
@@ -59,4 +58,5 @@ page = SolaraViz(
     components=[CommandConsole],
     model_params=model_params,
     name="Random Model",
+    measures=["Cleaned Tiles"]
 )
